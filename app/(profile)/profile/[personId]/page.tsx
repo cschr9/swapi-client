@@ -10,12 +10,15 @@ const ProfilePage = async ({ params }: { params: { personId: string } }) => {
     return res.json();
   });
 
-  console.log(person);
-
   return (
     <div>
       <div>
-        <Image alt={person.name} src={placeholder.svg} />
+        <Image
+          alt={person.name}
+          src={"/assets/placeholder.webp"}
+          width={277}
+          height={280}
+        />
       </div>
       <div className="flex w-full flex-col">
         <h2 className="text-5xl text-white">{person.name}</h2>
