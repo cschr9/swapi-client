@@ -13,7 +13,7 @@ const SearchBar = (props: Props) => {
   const [searchResults, setSearchResults] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const debouncedSearchQuery = useDebounce(searchQuery, 500);
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
   useEffect(() => {
     const controller = new AbortController();
     const searchResults = async () => {
@@ -29,12 +29,12 @@ const SearchBar = (props: Props) => {
         .catch((err) => console.error(err))
         .finally(() => setIsLoading(false));
     };
-    if (debouncedSearchQuery) {
+    if (debouncedSearchQuery.length > 0) {
       searchResults();
     } else {
       setSearchResults([]);
-      controller.abort();
     }
+    return () => controller.abort();
   }, [debouncedSearchQuery]);
 
   return (
