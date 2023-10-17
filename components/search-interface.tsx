@@ -4,6 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { PEOPLE_URL } from "@/lib/swapi";
 import axios from "axios";
+import { cn } from "@/lib/utils";
 
 type SearchInterfaceProps = {
   hideRandomButton?: boolean;
@@ -11,12 +12,11 @@ type SearchInterfaceProps = {
 
 const fetchRandomMax = async () => {
   try {
-    const count = await axios.get(PEOPLE_URL).then((res) => {
-      return res.data.count;
-    });
+    const count = (await axios.get(PEOPLE_URL))?.data?.count;
     return count;
-  } catch (error) {
-    throw new Error("Error fetching random max count");
+  } catch (error: unknown) {
+    if (error instanceof Error)
+      throw new Error(`Error fetching random max count: ${error.message}`);
   }
 };
 
@@ -26,17 +26,25 @@ const SearchInterface = async ({ hideRandomButton }: SearchInterfaceProps) => {
     count = await fetchRandomMax();
   }
 
+  const randomPersonId = Math.floor(Math.random() * count) + 1;
+
   return (
     <div className="relative flex w-full max-w-4xl flex-col items-center space-y-8">
       <SearchBar />
-      <div className="flex space-x-2">
+      <div className="flex flex-col items-center space-y-4">
         {!hideRandomButton && (
-          <Link
-            className={buttonVariants({ variant: "default", size: "lg" })}
-            href={`/profile/${Math.floor(Math.random() * count) + 1}`}
-          >
-            Möge der Zufall mit dir sein
-          </Link>
+          <>
+            <span className="text-muted-foreground">-oder-</span>
+            <Link
+              className={cn(
+                buttonVariants({ variant: "default", size: "lg" }),
+                "rounded-3xl  bg-black/50 p-4 text-white hover:bg-black/75",
+              )}
+              href={`/profile/${randomPersonId}`}
+            >
+              Möge der Zufall mit dir sein
+            </Link>
+          </>
         )}
       </div>
     </div>

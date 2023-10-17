@@ -1,3 +1,13 @@
+## Hey Du!
+
+Erstmal vielen Dank, dass du dir die Zeit nimmst den Code zu reviewen. Ich hijacke die readme kurz um dir ein paar Infos und Gedankengänge zum Client mit auf dem Weg geben.
+
+Meine erste Idee war es eine Suche über alle Endpoints mit AutoComplete zu implementieren. Da die API aber recht lahm ist, habe ich mich entschieden den Scope zu reduzieren und eine Suche nur für Charaktere zu implementieren, dafür aber die UX in den Fokus zu stellen. Ich habe dabei versucht verschiedene Fetching Techniken (RSC vs CSC), fortgeschrittene React Konzepte & Features wie customHooks, HOC, Suspense, sowie einige Next.js spezifischen Features möglichst elegant einzubinden.
+
+Hätte ich mehr Zeit gehabt, hätte ich als nächstes Feature ein Favoriten-System implementiert, das Error-Handling verbessert & zumindest für die Suche einen Unit Test geschrieben. Das UI ist sicherlich auch noch ausbaufähig.
+
+Viel Spaß beim reviewen. :-)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
