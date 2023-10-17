@@ -12,7 +12,6 @@ type Props = {
 
 const SearchResults = ({ results, className, isLoading }: Props) => {
   const SKELETON_COUNT = 5;
-  //get the id from the url attribute "https://swapi.dev/api/people/1/"
 
   return (
     <div
@@ -48,13 +47,11 @@ const SearchResultSkeleton = ({ count }: { count: number }) => {
   return (
     <>
       {Array.from({ length: count }, (_, i) => (
-        <div
-          className="my-2 flex w-full items-center space-x-4"
+        <Skeleton
           key={`skeleton-${i}`}
-        >
-          <Skeleton className="h-[24px] w-[140px] rounded-full" />
-          <Skeleton className="h-[24px] w-[60px] rounded-full" />
-        </div>
+          className="my-2 h-[24px] rounded-full"
+          style={{ width: `${100 + Math.floor(i * Math.random()) * 50}px` }}
+        />
       ))}
     </>
   );
