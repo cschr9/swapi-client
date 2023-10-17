@@ -12,7 +12,7 @@ const fetchFilmData = async (filmUrl: string) => {
     const data: FilmDTO = await res.data;
     return data;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 };
 

@@ -3,13 +3,11 @@ import Image from "next/image";
 import SearchInterface from "../search-interface";
 import Link from "next/link";
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   return (
-    <header className="flex justify-between">
+    <header className="flex flex-col justify-between space-y-8 sm:flex-row sm:space-y-0">
       <div>
-        <Link href="/">
+        <Link href="/" aria-label="Home">
           <Image
             src="/assets/cs-logo.svg"
             width={80}

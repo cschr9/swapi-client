@@ -56,7 +56,7 @@ const ProfilePage = async ({
   } = person;
 
   return (
-    <main className="flex space-x-8 rounded-3xl bg-black/25 p-16">
+    <main className="flex flex-col rounded-3xl bg-black/25 p-16 xl:flex-row xl:space-x-8">
       <div className="space-y-4">
         <Image
           alt={name}

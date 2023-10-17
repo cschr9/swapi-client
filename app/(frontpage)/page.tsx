@@ -10,7 +10,7 @@ export default function Home() {
         height={160}
         alt="Christian Schröder"
       />
-      <p className="text-5xl text-white">
+      <p className="text-wrap-balance text-center text-5xl text-white">
         Find your favourite Starwars Character
       </p>
       <SearchInterface />
