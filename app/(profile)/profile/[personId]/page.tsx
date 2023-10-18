@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 import { PEOPLE_URL, formatDate } from "@/lib/swapi";
 import WithSuspense from "@/components/withSuspense";
+import FavouriteHandler from "@/components/favourite-handler";
 
 const fetchPersonData = async (personId: string) => {
   try {
@@ -77,11 +78,16 @@ const ProfilePage = async ({
       </div>
       <div className="flex w-full flex-col">
         <div>
-          <div className="border-b border-neutral-900 py-4">
-            <h2 className="text-5xl text-white">{name}</h2>
-            <span className="text-sm text-muted-foreground">
-              Last Update: {formatDate(edited)}
-            </span>
+          <div className="flex items-start justify-between border-b border-neutral-900 py-4">
+            <div>
+              <h2 className="text-5xl text-white">{name}</h2>
+              <span className="text-sm text-muted-foreground">
+                Last Update: {formatDate(edited)}
+              </span>
+            </div>
+            <div>
+              <FavouriteHandler character={person} />
+            </div>
           </div>
           <div className="border-b border-neutral-900 py-4">
             <h2 className="mb-2 text-3xl text-white">Films</h2>
